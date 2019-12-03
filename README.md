@@ -20,3 +20,8 @@ kubectl apply -f metrics-server/deploy/1.8+/
 ```
 etcdctl snapshot save --cacert ca.crt --cert server.crt --key server.key /root/etcd.db
 ```
+### fazendo consultas no etcd
+```
+etcdctl get '' --prefix --keys-only --cacert ca.crt --cert server.crt --key server.key
+etcdctl get '/registry/pods/default' --prefix --cacert ca.crt --cert server.crt --key server.key
+```
