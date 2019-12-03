@@ -1,0 +1,22 @@
+### Rodar geração do Vagrant
+```
+vagrant up
+```
+### Ver status das máquinas criadas
+```
+vagrant status
+```
+### Instalando metrics server
+- Abrir o arquivo:
+```
+vim metrics-server/deploy/1.8+/metrics-server-deployment.yaml
+trocar readOnlyRootFileSystem para false
+incluir em args:
+  --kubelet-insecure-tls
+  --kubelet-preferred-address-types=InternalIP
+kubectl apply -f metrics-server/deploy/1.8+/
+```
+### Fazendo backup do etcd
+```
+etcdctl snapshot save --cacert ca.crt --cert server.crt --key server.key /root/etcd.db
+```
