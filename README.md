@@ -25,3 +25,15 @@ etcdctl snapshot save --cacert ca.crt --cert server.crt --key server.key /root/e
 etcdctl get '' --prefix --keys-only --cacert ca.crt --cert server.crt --key server.key
 etcdctl get '/registry/pods/default' --prefix --cacert ca.crt --cert server.crt --key server.key
 ```
+### Criar namespace
+```
+kubectl create ns <namespace-name>
+```
+### Criar service account sa atrelado a um namespace
+```
+kubectl create sa sa-restart -n <namespace-name>
+```
+### ver qual namespace estou
+```
+kubectl config view
+```
