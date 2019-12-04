@@ -1,0 +1,12 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: restart
+subjects:
+- kind: ServiceAccount
+  name: sa-restart
+  namespace: raphael
+roleRef:
+  kind: Role
+  name: restart
+  apiGroup: ""

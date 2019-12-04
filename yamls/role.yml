@@ -1,0 +1,14 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: restart
+  namespace: raphael
+rules:
+- apiGroups:
+  - apps
+  - extensions
+  resources:
+  - deployments
+  - deployments/scale
+  verbs:
+  - '*'

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bane
+  namespace: default
+spec:
+  #nodeName: master2
+  nodeSelector:
+    disk: ssd
+  containers:
+  - image: busybox:1.28
+    name: busybox
+    tty: true
+    stdin: true

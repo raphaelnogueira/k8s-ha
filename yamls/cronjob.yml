@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: restart-nginx
+  namespace: raphael
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: sa-restart
+          containers:
+          - name: kubectl
+            image: hectorvido/kubectl
+            command:
+            - /bin/sh
+            - -c
+            - kubectl scale deploy nginx --replicas=0 && sleep 5 && kubectl scale deploy nginx --replicas=1
+          restartPolicy: OnFailure
